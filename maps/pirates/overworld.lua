@@ -53,7 +53,7 @@ function Public.generate_overworld_destination(p)
 
 	local type, subtype
 
-	local island_subtype_raffle = {'none', 'none', Surfaces.Island.enum.STANDARD, Surfaces.Island.enum.STANDARD_VARIANT, Surfaces.Island.enum.RED_DESERT, Surfaces.Island.enum.HORSESHOE}
+	local island_subtype_raffle = {'none', 'none', Surfaces.Island.enum.STANDARD, Surfaces.Island.enum.STANDARD_VARIANT, Surfaces.Island.enum.RED_DESERT, Surfaces.Island.enum.HORSESHOE, Surfaces.Island.enum.FORTRESS}
 
 	if macrop.x >= 6 then island_subtype_raffle[#island_subtype_raffle + 1] = Surfaces.Island.enum.WALKWAYS end
 	if macrop.x >= 16 then island_subtype_raffle[#island_subtype_raffle + 1] = Surfaces.Island.enum.SWAMP end
@@ -67,7 +67,7 @@ function Public.generate_overworld_destination(p)
 			if _DEBUG then
 				-- Edit this to force a type/subtype in debug:
 
-				-- subtype = Surfaces.Island.enum.WALKWAYS
+				-- subtype = Surfaces.Island.enum.FORTRESS
 				-- type = Surfaces.enum.DOCK
 				-- subtype = nil
 			end

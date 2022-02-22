@@ -239,10 +239,6 @@ function Public.destination_on_arrival(destination)
 		memory.scripted_unit_groups = {}
 		memory.floating_pollution = 0
 
-		if destination.subtype == Islands.enum.RADIOACTIVE then
-			Islands[Islands.enum.RADIOACTIVE].spawn_structures()
-		end
-
 		if destination and destination.surface_name and game.surfaces[destination.surface_name] and game.surfaces[destination.surface_name].valid and (not (destination.dynamic_data and destination.dynamic_data.initial_spawner_count)) then
 			--Note: This gives the wrong answer on the first island. Because the terrain hasn't finished generating yet.
 			destination.dynamic_data.initial_spawner_count = Common.spawner_count(game.surfaces[destination.surface_name])
@@ -285,7 +281,7 @@ function Public.destination_on_arrival(destination)
 
 		if destination.subtype ~= Islands.enum.RADIOACTIVE then
 			local silo_position = Islands.spawn_silo_setup()
-			points_to_avoid[#points_to_avoid + 1] = {x = silo_position.x, y = silo_position.y, r = 22}
+			points_to_avoid[#points_to_avoid + 1] = {x = silo_position.x, y = silo_position.y, r = silo_position.r}
 		end
 
 		Islands.spawn_ores_on_shorehit(destination, points_to_avoid)
@@ -297,6 +293,10 @@ function Public.destination_on_arrival(destination)
 		
 		Islands.spawn_treasure_maps(destination, points_to_avoid)
 		Islands.spawn_ghosts(destination, points_to_avoid)
+		
+		if Islands[destination.subtype].spawn_structures then
+			Islands[destination.subtype].spawn_structures(destination, points_to_avoid)
+		end
 	end
 end
 

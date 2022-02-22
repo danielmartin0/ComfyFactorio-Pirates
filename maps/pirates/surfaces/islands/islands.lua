@@ -27,6 +27,7 @@ Public[enum.RADIOACTIVE] = require 'maps.pirates.surfaces.islands.radioactive.ra
 Public[enum.RED_DESERT] = require 'maps.pirates.surfaces.islands.red_desert.red_desert'
 Public[enum.HORSESHOE] = require 'maps.pirates.surfaces.islands.horseshoe.horseshoe'
 Public[enum.SWAMP] = require 'maps.pirates.surfaces.islands.swamp.swamp'
+Public[enum.FORTRESS] = require 'maps.pirates.surfaces.islands.fortress.fortress'
 Public['IslandsCommon'] = require 'maps.pirates.surfaces.islands.common'
 
 
@@ -277,6 +278,7 @@ function Public.spawn_silo_setup()
 	local force = game.forces[memory.force_name]
 
 	local p_silo = Public[subtype].generate_silo_position()
+	if p_silo.r == nil then p_silo.r=22 end
 	-- log(string.format("placing silo at x=%f, y = %f", p_silo.x, p_silo.y))
 
 	local silo = surface.create_entity({name = 'rocket-silo', position = p_silo, force = force, create_build_effect_smoke = false})

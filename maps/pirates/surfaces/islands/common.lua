@@ -19,6 +19,7 @@ local enum = {
 	STANDARD_VARIANT = '6',
 	HORSESHOE = '7',
 	SWAMP = '8',
+	FORTRESS = '9',
 }
 Public.enum = enum
 
